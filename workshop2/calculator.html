@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<style>
+		body {
+			padding-top: 50px;
+		}
+		.starter-template {
+			padding: 40px 15px;
+			text-align: center;
+		}
+	</style>
+	<title>Calculator</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<span class="navbar-brand">Calculator</span>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="starter-template">
+			<div class="form-horizontal">
+				<div class="row">
+					<div class="col-sm-4">
+						<p class="bg-success" id="finalResult">Put Number Here</p>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-2">
+						<input type="text" id="firstTally" disabled="disabled" class="form-control" placeholder="" />
+					</div>
+					<div class="col-sm-2">
+						<input type="text" id="secondTally" disabled="disabled" class="form-control" placeholder="" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-1">
+						<button class="btn btn-lg btn-primary">7</button>
+					</div>
+					<div class="col-sm-1">
+						<button class="btn btn-lg btn-primary">8</button>
+					</div>
+					<div class="col-sm-1">
+						<button class="btn btn-lg btn-primary">9</button>
+					</div>
+					<div class="col-sm-1">
+						<button class="btn btn-lg btn-primary">x</button>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-1">
+						<button class="btn btn-lg btn-primary">4</button>
+					</div>
+					<div class="col-sm-1">
+						<button class="btn btn-lg btn-primary">5</button>
+					</div>
+					<div class="col-sm-1">
+						<button class="btn btn-lg btn-primary">6</button>
+					</div>
+					<div class="col-sm-1">
+						<button class="btn btn-lg btn-primary">-</button>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-1">
+						<button class="btn btn-lg btn-primary">1</button>
+					</div>
+					<div class="col-sm-1">
+						<button class="btn btn-lg btn-primary">2</button>
+					</div>
+					<div class="col-sm-1">
+						<button onclick="addToTally(3)" class="btn btn-lg btn-primary">3</button>
+					</div>
+					<div class="col-sm-1">
+						<button class="btn btn-lg btn-primary">+</button>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-1">
+						<button class="btn btn-lg btn-primary">0</button>
+					</div>
+					<div class="col-sm-1">
+						<button onclick="resetTally()" class="btn btn-lg btn-danger">C</button>
+					</div>
+					<div class="col-sm-1">
+						<button class="btn btn-lg btn-danger">AC</button>
+					</div>
+					<div class="col-sm-1">
+						<button class="btn btn-lg btn-primary">=</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var addToTally = function (val) {
+			var tallyInput = document.getElementById('firstTally');
+			tallyInput.value += val;
+		};
+
+		var resetTally = function () {
+			var tallyInput = document.getElementById('firstTally');
+			tallyInput.value = '';
+		};
+	</script>
+</body>
+</html>

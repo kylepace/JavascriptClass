@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<style>
+		body {
+			padding-top: 50px;
+		}
+		.starter-template {
+			padding: 40px 15px;
+			text-align: center;
+		}
+	</style>
+	<title>HTML Events</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<span class="navbar-brand">Html Events</span>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="starter-template">
+			<div class="form-horizontal">
+				<div class="form-group">
+					<div class="col-sm-2">
+						<label>Push the button</label>
+					</div>
+					<div class="col-sm-3">
+						<button class="btn btn-primary" onclick="saySomething()">Say Something!</button>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-2">
+						<label>Select the drop-down</label>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control" onchange="selectChanged()">
+							<option>-- Select --</option>
+							<option>First</option>
+							<option>Second</option>
+							<option>Third</option>
+							<option>Fourth</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-2">
+						<label>Start typing</label>
+					</div>
+
+					<div class="col-sm-6">
+						<input type="text"
+							class="form-control"
+							placeholder="Start typing"
+							onblur="doneTyping()"
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var selectChangedCounter = 0;
+		function saySomething() {
+			window.alert('Hello there');
+		}
+
+		function selectChanged() {
+			selectChangedCounter += 1;
+			window.alert('You changed this item ' + selectChangedCounter + ' times.');
+		}
+
+		function doneTyping() {
+			window.alert('The text box has lost all focus.');
+		}
+	</script>
+</body>
+</html>

@@ -13,9 +13,19 @@
 <p>Don't worry about multiple words or proper capitalization.  Do remember to validate against numbers though.</p>
 
 <script type="text/javascript">
+	var usersWord = window.prompt('What is your word?');
 
-// Your code goes here
+	if (usersWord.length > 1) {
+		var firstCharacter = usersWord[0];
 
+		var withoutFirstCharacter = usersWord.slice(1);
+
+		var pigLatin = withoutFirstCharacter + firstCharacter + "ay";
+
+		window.alert(pigLatin);
+	} else {
+		window.alert('This only works for words.');
+	}
 </script>
 
 </body>

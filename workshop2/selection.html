@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<style>
+		body {
+			padding-top: 50px;
+		}
+		.starter-template {
+			padding: 40px 15px;
+			text-align: center;
+		}
+	</style>
+	<title>HTML Selection</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<span class="navbar-brand">Html Selection</span>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="starter-template">
+			<div class="form-horizontal">
+				<div class="form-group">
+					<div class="col-sm-2">
+						<label>Push the button</label>
+					</div>
+					<div class="col-sm-3">
+						<button class="btn btn-primary" onclick="saySomething()">Say Something!</button>
+					</div>
+					<div class="col-sm-7">
+						<div id="counterArea"></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-2">
+						<label>Change the color of the background</label>
+					</div>
+					<div class="col-sm-3">
+						<select id="selectColor" class="form-control" onchange="selectChanged()">
+							<option value="white">-- Select --</option>
+							<option>Blue</option>
+							<option>Red</option>
+							<option>Green</option>
+							<option>Purple</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-2">
+						<label>Start typing</label>
+					</div>
+
+					<div class="col-sm-6">
+						<input type="text"
+							id="textInput"
+							class="form-control"
+							placeholder="Start typing"
+							onkeyup="doneTyping()"
+						/>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-12">
+						<div id="textArea"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var timesPushedTheButton = 0;
+		function saySomething() {
+			timesPushedTheButton += 1;
+			var counterArea = document.getElementById('counterArea');
+			counterArea.innerHTML = 'You\ve pushed the button ' + timesPushedTheButton + ' times.';
+		}
+
+		function selectChanged () {
+			var selectColor = document.getElementById('selectColor');
+			document.body.style.backgroundColor = selectColor.value;
+		}
+
+		function doneTyping() {
+			var textArea = document.getElementById('textArea');
+			var textInput = document.getElementById('textInput');
+			textArea.innerHTML = textInput.value;
+		}
+	</script>
+</body>
+</html>
