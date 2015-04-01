@@ -18,8 +18,12 @@ By the end of these exercises you should be able to understand the following con
 
 (Note, most of this can be done with HTML 5 now, don't use this yet as it would circumvent the need to use javascript at all, and that's the point silly.)
 
+2. Kitchen sink, demonstrate your html selection skills and go through the following exercises:
+	1. Push the button and alert the user of the value they entered
+	2. Add the numbers from the two boxes together, then alert the user of the value.
+	3. Update the text block with the selected value from the drop-down.
 
-2. Create a basic two-input calculator with the following functions:
+3. Create a basic two-input calculator with the following functions:
 	1. Addition
 	2. Subtraction
 	3. Multiplication
