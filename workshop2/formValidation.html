@@ -26,16 +26,16 @@
 	<div class="container">
 		<div class="starter-template">
 			<div class="form-horizontal">
-				<p class="bg-success"></p>
+				<p id="successMessage" class="bg-success"></p>
 
-				<p class="bg-danger"></p>
+				<p id="errors" class="bg-danger"></p>
 
 				<div class="form-group">
 					<div class="col-sm-2">
 						<label>Email</label>
 					</div>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" placeholder="Enter an email address" />
+						<input type="text" id="emailField" class="form-control" placeholder="Enter an email address" />
 					</div>
 				</div>
 
@@ -44,7 +44,7 @@
 						<label>Password</label>
 					</div>
 					<div class="col-sm-6">
-						<input type="password"
+						<input id="passwordField" type="password"
 							class="form-control"
 							placeholder="Enter a password"
 						/>
@@ -58,17 +58,71 @@
 
 					<div class="col-sm-6">
 						<input type="password"
+							id="confirmPasswordField"
 							class="form-control"
 							placeholder="Confirm your password"
 						/>
 					</div>
 				</div>
-				<button class="btn btn-success btn-block">Sign Up</button>
+				<button class="btn btn-success btn-block"
+					onclick="signUpClicked()"
+					>Sign Up</button>
 			</div>
 		</div>
 	</div>
 
 	<script type="text/javascript">
+
+		//Make sure you filled out the email field
+
+		var isFieldInvalid = function (fieldName) {
+			var fieldToValidate = document.getElementById(fieldName);
+			return fieldToValidate.value.length === 0;
+		};
+
+		var arePasswordFieldsTheSame = function () {
+			var passwordField = document.getElementById('passwordField');
+
+			var confirmPasswordField = document.getElementById('confirmPasswordField');
+
+			return passwordField.value === confirmPasswordField.value;
+		};
+
+		var signUpClicked = function () {
+			var errors = document.getElementById('errors');
+
+			errors.innerHTML = '';
+
+			if (isFieldInvalid('emailField')) {
+				errors.innerHTML = "No email provided";
+				return;
+			}
+
+			if (isFieldInvalid('passwordField')) {
+				errors.innerHTML = "No password provided";
+				return;
+			}
+
+			if (isFieldInvalid('confirmPasswordField')) {
+				errors.innerHTML = "No confirm password provided";
+				return;
+			}
+
+			if (!arePasswordFieldsTheSame()) {
+				errors.innerHTML = "The password fields were different";
+				return;
+			} else {
+				var successMessage = document.getElementById('successMessage');
+
+				successMessage.innerHTML = 'Form is valid!';
+			}
+		};
+
+		//Make sure you fill out the password field
+
+		//Make sure you fill out the confirm password field
+
+
 
 	</script>
 </body>

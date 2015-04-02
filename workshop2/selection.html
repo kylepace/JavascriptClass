@@ -43,7 +43,7 @@
 						<label>Change the color of the background</label>
 					</div>
 					<div class="col-sm-3">
-						<select id="selectColor" class="form-control" onchange="selectChanged()">
+						<select id="selectColor" class="form-control" onchange="saySomething()">
 							<option value="white">-- Select --</option>
 							<option>Blue</option>
 							<option>Red</option>
@@ -79,6 +79,8 @@
 
 	<script type="text/javascript">
 		var timesPushedTheButton = 0;
+		saySomething();
+		saySomething();
 		function saySomething() {
 			timesPushedTheButton += 1;
 			var counterArea = document.getElementById('counterArea');
