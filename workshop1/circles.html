@@ -14,7 +14,14 @@
 
 <script type="text/javascript">
 
-// Your code goes here
+	var usersInput = window.prompt('Whats the radius of your circle?');
+	var radius = parseInt(usersInput);
+	if (isNaN(radius)) {
+		window.alert('That\'s not a number!');
+	} else {
+		var circumference = (2 * Math.PI) * radius;
+		alert('The circumference is ' + circumference.toFixed(2));
+	}
 
 </script>
 
