@@ -15,9 +15,40 @@
 <p>The game is over when the user answers correctly or has tried twice.</p>
 
 <script type="text/javascript">
+	var randomInteger = function (max, min) {
+		return Math.floor(Math.random() * (max - min)) + min;
+	};
 
-// Your code goes here
-
+	var secretNumber = randomInteger(1, 10);
+	console.log(secretNumber);
+	var firstGuess = parseInt(prompt('Give me your first guess?'));
+	if (!isNaN(firstGuess)) {
+		if (firstGuess > secretNumber) {
+			alert('You were too high, try again.');
+			var secondGuess = parseInt(prompt('Give me your second guess?'));
+			if (!isNaN(secondGuess)) {
+				if (secondGuess === secretNumber) {
+					alert('You win!');
+				} else {
+					alert('You lost');
+				}
+			}
+		} else if (firstGuess < secretNumber) {
+			alert('You were too low, try again.');
+			var secondGuess = parseInt(prompt('Give me your second guess?'));
+			if (!isNaN(secondGuess)) {
+				if (secondGuess === secretNumber) {
+					alert('You win!');
+				} else {
+					alert('You lost');
+				}
+			}
+		} else {
+			alert('You win');
+		}
+	} else {
+		alert('That wasn\'t a valid guess.');
+	}
 </script>
 
 </body>
