@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<style>
+		body {
+			padding-top: 50px;
+		}
+		.starter-template {
+			padding: 40px 15px;
+			text-align: center;
+		}
+	</style>
+	<title>Max Value</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<span class="navbar-brand">Max Value</span>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="starter-template">
+			<div class="form-horizontal">
+				<p id="answer" class="bg-success"></p>
+
+				<p id="errors" class="bg-danger"></p>
+
+				<div class="form-group">
+					<div class="col-sm-4">
+						<input type="text" id="firstNumber" class="form-control" placeholder="First Number" />
+					</div>
+					<div class="col-sm-4">
+						<input type="text" id="secondNumber" class="form-control" placeholder="Second Number" />
+					</div>
+					<div class="col-sm-4">
+						<button class="btn btn-danger" onclick="getMaxValue()">Whats the max value?</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function getMaxValue() {
+			var errorSection = document.getElementById('errors');
+			var answerSection = document.getElementById('answer');
+			errorSection.innerHTML = '';
+			answerSection.innerHTML = '';
+
+			var firstNumber = parseInt(document.getElementById('firstNumber').value);
+			var secondNumber = parseInt(document.getElementById('secondNumber').value);
+			if (isNaN(firstNumber) || isNaN(secondNumber)) {
+				var errorMessage = 'Both inputs need to be numbers first input: ' + firstNumber + ' second input: ' + secondNumber;
+				errorSection.innerHTML = errorMessage;
+				return;
+			}
+
+			if (firstNumber > secondNumber) {
+				answerSection.innerHTML = 'The first number is greater';
+			} else if (firstNumber < secondNumber) {
+				answerSection.innerHTML = 'The second number is greater.';
+			} else {
+				answerSection.innerHTML = 'The numbers are the same.';
+			}
+		}
+	</script>
+</body>
+</html>

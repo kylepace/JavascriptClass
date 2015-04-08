@@ -20,7 +20,6 @@
 
 	if (usersWord.length > 1) {
 
-		//Find first character of word
 		var firstCharacter = usersWord.charAt(0);
 
 		var withoutFirstCharacter = usersWord.slice(1);
@@ -28,33 +27,7 @@
 		var pigLatinWord = withoutFirstCharacter + firstCharacter + "ay";
 
 		window.alert('Your pig latin word is ' + pigLatinWord);
-
-		//Find the rest of the word
-
-		//Concatenate the entire word in pig latin
-
 	}
-
-
-
-
-
-
-
-
-// var usersWord = window.prompt('What is your word?');
-//
-// if (usersWord.length > 1) {
-// 	var firstCharacter = usersWord[0];
-//
-// 	var withoutFirstCharacter = usersWord.slice(1);
-//
-// 	var pigLatin = withoutFirstCharacter + firstCharacter + "ay";
-//
-// 	window.alert(pigLatin);
-// } else {
-// 	window.alert('This only works for words.');
-// }
 </script>
 
 </body>
