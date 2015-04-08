@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<style>
+		body {
+			padding-top: 50px;
+		}
+		.starter-template {
+			padding: 40px 15px;
+			text-align: center;
+		}
+	</style>
+	<title>Convert Temperatures</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<span class="navbar-brand">Convert Temperatures</span>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="starter-template">
+			<div class="form-horizontal">
+				<p id="answers" class="bg-success"></p>
+
+				<p id="errors" class="bg-danger"></p>
+
+				<div class="form-group">
+					<div class="col-sm-4">
+						<input type="text" id="temp" class="form-control" placeholder="Temperature" />
+					</div>
+					<div class="col-sm-4">
+						<select class="form-control">
+							<option value="C">Fahrenheit to Celsius</option>
+							<option value="F">Celsius to Fahrenheit</option>
+						</select>
+					</div>
+					<div class="col-sm-4">
+						<button class="btn btn-danger" onclick="convert()">Convert</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var convertToCelsius = function (number) {
+			// (F  -  32)  x  5/9 = C
+			return (number - 32) * (5 / 9);
+		};
+		var convert = function () {
+			var errorSection = document.getElementById('errors');
+			var answersSection = document.getElementById('answers');
+			errorSection.innerHTML = answersSection.innerHTML = '';
+			var temp = parseInt(document.getElementById('temp').value);
+			if (isNaN(temp)) {
+				errorSection.innerHTML = 'Can only convert a number.';
+				return;
+			}
+
+			var convertedTemp = convertToCelsius(temp);
+			answersSection.innerHTML = 'Converted: ' + temp + ' F to ' + convertedTemp.toFixed(2) + ' C';
+		};
+	</script>
+</body>
+</html>
