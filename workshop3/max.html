@@ -32,7 +32,7 @@
 
 				<div class="form-group">
 					<div class="col-sm-4">
-						<input type="text" id="firstNumber" class="form-control" placeholder="First Number" />
+						<input type="text" value="4" id="firstNumber" class="form-control" placeholder="First Number" />
 					</div>
 					<div class="col-sm-4">
 						<input type="text" id="secondNumber" class="form-control" placeholder="Second Number" />
@@ -46,28 +46,69 @@
 	</div>
 
 	<script type="text/javascript">
-		function getMaxValue() {
-			var errorSection = document.getElementById('errors');
-			var answerSection = document.getElementById('answer');
-			errorSection.innerHTML = '';
-			answerSection.innerHTML = '';
 
-			var firstNumber = parseInt(document.getElementById('firstNumber').value);
-			var secondNumber = parseInt(document.getElementById('secondNumber').value);
-			if (isNaN(firstNumber) || isNaN(secondNumber)) {
-				var errorMessage = 'Both inputs need to be numbers first input: ' + firstNumber + ' second input: ' + secondNumber;
-				errorSection.innerHTML = errorMessage;
-				return;
-			}
+		var firstNumber = document.getElementById('firstNumber');
+		var secondNumber = document.getElementById('secondNumber');
+		var errors = document.getElementById('errors');
+		var successArea = document.getElementById('answer');
 
-			if (firstNumber > secondNumber) {
-				answerSection.innerHTML = 'The first number is greater';
-			} else if (firstNumber < secondNumber) {
-				answerSection.innerHTML = 'The second number is greater.';
-			} else {
-				answerSection.innerHTML = 'The numbers are the same.';
+		var validateForm = function (first, second) {
+			var isValid = true;
+			if (isNaN(first)) {
+				errors.innerHTML = 'The first value was not a number.';
+				isValid = false;
+			} else if (isNaN(second)) {
+				errors.innerHTML = 'The second value was not a number.';
+				isValid = false;
 			}
-		}
+			return isValid;
+		};
+
+		var resetAlerts = function () {
+			errors.innerHTML = '';
+			successArea.innerHTML = '';
+		};
+
+		var getMaxValue = function () {
+			resetAlerts();
+
+			var firstValue = parseInt(firstNumber.value);
+			var secondValue = parseInt(secondNumber.value);
+
+			var formIsValid = validateForm(firstValue, secondValue);
+			if (formIsValid === true) {
+				if (firstValue === secondValue) {
+					successArea.innerHTML = 'The values are equal.';
+				} else if (firstValue > secondValue) {
+					successArea.innerHTML = 'The first value was greater';
+				} else {
+					successArea.innerHTML = 'The second value was greater';
+				}
+			}
+		};
+
+		// function getMaxValue() {
+		// 	var errorSection = document.getElementById('errors');
+		// 	var answerSection = document.getElementById('answer');
+		// 	errorSection.innerHTML = '';
+		// 	answerSection.innerHTML = '';
+		//
+		// 	var firstNumber = parseInt(document.getElementById('firstNumber').value);
+		// 	var secondNumber = parseInt(document.getElementById('secondNumber').value);
+		// 	if (isNaN(firstNumber) || isNaN(secondNumber)) {
+		// 		var errorMessage = 'Both inputs need to be numbers first input: ' + firstNumber + ' second input: ' + secondNumber;
+		// 		errorSection.innerHTML = errorMessage;
+		// 		return;
+		// 	}
+		//
+		// 	if (firstNumber > secondNumber) {
+		// 		answerSection.innerHTML = 'The first number is greater';
+		// 	} else if (firstNumber < secondNumber) {
+		// 		answerSection.innerHTML = 'The second number is greater.';
+		// 	} else {
+		// 		answerSection.innerHTML = 'The numbers are the same.';
+		// 	}
+		// }
 	</script>
 </body>
 </html>

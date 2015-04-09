@@ -47,33 +47,6 @@
 		var randomInteger = function (max, min) {
 			return Math.floor(Math.random() * (max - min)) + min;
 		};
-
-		var secretNumber = randomInteger(1, 10);
-		var guess = function () {
-			var errorSection = document.getElementById('errors');
-			var answersSection = document.getElementById('answers');
-			var usersGuess = parseInt(document.getElementById('usersGuess').value);
-			answersSection.innerHTML = '';
-			if (guesses === 0) {
-				errorSection.innerHTML = 'You ran out of guesses.';
-				return;
-			}
-
-			errorSection.innerHTML = '';
-			guesses -= 1;
-			if (isNaN(usersGuess)) {
-				errorSection.innerHTML = 'The guess needs to be a number.';
-				return;
-			}
-
-			if (usersGuess > secretNumber) {
-				answersSection.innerHTML = 'You were too high.';
-			} else if (usersGuess < secretNumber) {
-				answersSection.innerHTML = 'You were too low.';
-			} else {
-				answersSection.innerHTML = 'You win!';
-			}
-		};
 	</script>
 </body>
 </html>
