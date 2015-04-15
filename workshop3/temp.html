@@ -41,7 +41,7 @@
 						</select>
 					</div>
 					<div class="col-sm-4">
-						<button class="btn btn-danger">Convert</button>
+						<button class="btn btn-danger" onclick="convert()">Convert</button>
 					</div>
 				</div>
 			</div>
@@ -49,6 +49,23 @@
 	</div>
 
 	<script type="text/javascript">
+		var convertToCelsius = function (number) {
+			// (F  -  32)  x  5/9 = C
+			return (number - 32) * (5 / 9);
+		};
+		var convert = function () {
+			var errorSection = document.getElementById('errors');
+			var answersSection = document.getElementById('answers');
+			errorSection.innerHTML = answersSection.innerHTML = '';
+			var temp = parseInt(document.getElementById('temp').value);
+			if (isNaN(temp)) {
+				errorSection.innerHTML = 'Can only convert a number.';
+				return;
+			}
+
+			var convertedTemp = convertToCelsius(temp);
+			answersSection.innerHTML = 'Converted: ' + temp + ' F to ' + convertedTemp.toFixed(2) + ' C';
+		};
 	</script>
 </body>
 </html>
