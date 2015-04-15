@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<style>
+		body {
+			padding-top: 50px;
+		}
+		.starter-template {
+			padding: 40px 15px;
+			text-align: center;
+		}
+	</style>
+	<title>Arrays - Part Two</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<span class="navbar-brand">Arrays - Part Two</span>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="starter-template">
+			Check the console and run the following functions...
+		</div>
+		<div id="areaToUpdate"></div>
+
+		<ul>
+			<li>addItemByIndex()</li>
+			<li>addItemsWithPush()</li>
+			<li>removeItemsWithPop()</li>
+			<li>removeItemsWithShift()</li>
+		</ul>
+	</div>
+
+<script type="text/javascript">
+
+	var addItemByIndex = function () {
+
+		var candy = ["Skittles", "Sour Patch Kids", "Snickers"];
+
+		candy[3] = "Starburst";
+
+		console.log(candy);
+	};
+
+	var addItemsWithPush = function () {
+
+		var sports = [ "Baseball", "Basketball", "Football" ];
+
+		sports.push("Soccer");
+
+		console.log(sports);
+	};
+
+	var removeItemsWithPop = function () {
+
+		var animals = [ "Pigs", "Cats", "Dogs", "Cows" ];
+
+		animals.pop();
+
+		console.log(animals);
+	};
+
+	var removeItemsWithShift = function () {
+
+		var animals = [ "Pigs", "Cats", "Dogs", "Cows" ];
+
+		animals.shift();
+
+		console.log(animals);
+	};
+</script>
+</body>
+</html>

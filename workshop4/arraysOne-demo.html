@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<style>
+		body {
+			padding-top: 50px;
+		}
+		.starter-template {
+			padding: 40px 15px;
+			text-align: center;
+		}
+	</style>
+	<title>Arrays - Part One</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<span class="navbar-brand">Arrays - Part One</span>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="starter-template">
+			Check the console and run the following functions...
+		</div>
+		<div id="areaToUpdate"></div>
+
+		<ul>
+			<li>createArray()</li>
+			<li>accessItemsInAnArray()</li>
+			<li>howManyItemsInArray()</li>
+		</ul>
+	</div>
+
+<script type="text/javascript">
+
+	var createArray = function () {
+
+		var myFirstArray = [ "Hello", "World" ];
+
+		console.log(myFirstArray);
+
+	};
+
+	var accessItemsInAnArray = function () {
+
+		var sports = [ "Baseball", "Basketball", "Football" ];
+
+		console.log(sports[2]);
+
+		console.log(sports[1]);
+
+		console.log(sports[0]);
+	};
+
+	var howManyItemsInArray = function () {
+
+		var animals = [ "Pigs", "Cats", "Dogs", "Cows" ];
+
+		console.log(animals.length);
+	};
+
+</script>
+</body>
+</html>

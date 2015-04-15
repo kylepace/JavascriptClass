@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<style>
+		body {
+			padding-top: 50px;
+		}
+		.starter-template {
+			padding: 40px 15px;
+			text-align: center;
+		}
+	</style>
+	<title>For Loops</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<span class="navbar-brand">For Loops</span>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="starter-template">
+			Check the console and run the following functions...
+		</div>
+		<div id="areaToUpdate"></div>
+
+		<ul>
+			<li>printNumbersLoop()</li>
+			<li>skipskipEven()</li>
+			<li>countDescending()</li>
+			<li>updateDivLoop()</li>
+		</ul>
+	</div>
+
+<script type="text/javascript">
+
+	var printNumbersLoop = function () {
+		for (var i = 0; i < 10; i++) {
+
+			console.log(i);
+
+		}
+	};
+
+	var countDescending = function () {
+		for (var i = 10; i > 0; i--) {
+
+			console.log(i);
+
+		}
+	};
+
+	var skipEven = function () {
+		for (var i = 0; i < 10; i++) {
+
+			if (i % 2 !== 0) {
+
+				console.log(i);
+
+			}
+
+		}
+	};
+
+	var updateDivLoop = function () {
+		for (var i = 0; i < 10; i++) {
+
+			document.getElementById('areaToUpdate').innerHTML += 'Looping: ' + i + '<br />';
+
+		}
+	};
+
+
+</script>
+</body>
+</html>

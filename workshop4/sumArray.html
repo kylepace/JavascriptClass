@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<style>
+		body {
+			padding-top: 50px;
+		}
+		.starter-template {
+			padding: 40px 15px;
+			text-align: center;
+		}
+	</style>
+	<title>Arrays - Sum all Items</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<span class="navbar-brand">Arrays - Sum all Items</span>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="starter-template">
+			<p>
+				In this exercise, start by summing all the numbers in the "numbers" array.
+				The initial sum should be 10.
+			</p>
+			<p>
+				The code to print this to the screen is already
+				done.  Just fill out the code inside of the sumNumbers method.
+			</p>
+			<p>
+				Then allow a user to input a number, add the number to the array, and re-sum
+				the numbers in the array.
+			</p>
+			<div class="form-horizontal">
+				<p id="numbersInfo" class="bg-info"></p>
+
+				<div class="form-group">
+					<div class="col-sm-8">
+						<input type="number" id="newNumber" class="form-control" placeholder="Enter a number" />
+					</div>
+					<div class="col-sm-4">
+						<button class="btn btn-info" onclick="addNumber()">Add</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript">
+	var numbers = [1, 2, 3, 4];
+
+	var sumNumbers = function () {
+		return 0;
+	};
+
+	var printNumberToScreen = function () {
+		document.getElementById('numbersInfo').innerHTML = 'Sum of numbers is: ' + sumNumbers();
+	};
+
+	var addNumber = function () {
+		var newNumber = document.getElementById('newNumber').value;
+		if (!newNumber) {
+			return;
+		}
+
+		alert('Code not finished yet: ' + newNumber);
+	};
+
+	printNumberToScreen();
+</script>
+</body>
+</html>
