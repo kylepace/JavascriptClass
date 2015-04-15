@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<style>
+		body {
+			padding-top: 50px;
+		}
+		.starter-template {
+			padding: 40px 15px;
+			text-align: center;
+		}
+	</style>
+	<title>Arrays - Reverse all words</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<span class="navbar-brand">Arrays - Reverse all Words</span>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="starter-template">
+			<p>
+				Take the user input and print out sentence in reverse.
+			</p>
+			<p>
+				The code to get the value of the user input and add to the screen
+				is already done for you.
+			</p>
+			<p>
+				HINT: Use string's split() method turn a string into an array.
+			</p>
+			<div class="form-horizontal">
+				<p id="reversedSentence" class="bg-info"></p>
+
+				<div class="form-group">
+					<div class="col-sm-8">
+						<input type="text" id="sentence" class="form-control" placeholder="Enter a sentence" />
+					</div>
+					<div class="col-sm-4">
+						<button class="btn btn-info" onclick="reverseSentence()">Reverse</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript">
+
+	var reverseSentence = function () {
+		var sentence = document.getElementById('sentence').value;
+
+		// hint: use string's "split" method to get an array
+
+		document.getElementById('reversedSentence').innerHTML = sentence;
+	};
+</script>
+</body>
+</html>
