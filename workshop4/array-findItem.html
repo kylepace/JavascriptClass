@@ -44,15 +44,33 @@
 
 	document.getElementById('carsInfo').innerHTML = cars.toString();
 
+	var isInArray = function (list, valueToCheck) {
+		var isInList = false;
+		for (var i = 0; i < list.length; i++) {
+			var item = list[i];
+
+			if (valueToCheck === item) {
+				isInList = true;
+			}
+		}
+		return isInList;
+	};
+
 	var checkForCar = function () {
 		var carCheckValue = document.getElementById('carCheck').value;
 
-		for (var i = 0; i < cars.length; i++) {
-			if (cars[i] === carCheckValue) {
-				alert('We have that car.');
-			}
+		if (isInArray(cars, carCheckValue)) {
+			alert('You found a match!');
 		}
 	};
+
+	// var carCheckValue = document.getElementById('carCheck').value;
+	//
+	// for (var i = 0; i < cars.length; i++) {
+	// 	if (cars[i] === carCheckValue) {
+	// 		alert('We have that car.');
+	// 	}
+	// }
 </script>
 </body>
 </html>
