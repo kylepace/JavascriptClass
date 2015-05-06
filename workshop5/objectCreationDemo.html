@@ -1,0 +1,84 @@
+<script type="text/javascript">
+
+	// lets model out a fake facebook wall post using Object Literal
+	var wallPost = {
+		creator: {
+			firstName: 'Kyle',
+			lastName: 'Pace'
+		},
+		recipient: {
+			firstName: 'Larry',
+			lastName: 'David'
+		},
+		createdAt: '03/04/2015 12:00:00 AM',
+		content: 'Happy Birthday!',
+		tags: [
+			'Larry David', 'Shaq'
+		]
+	};
+
+	console.log(wallPost.content);
+
+	// Car using object literal
+	var car = {
+		make: 'Jeep',
+		model: 'Cherokee',
+		drive: function () {
+			console.log('Driving to cleveland using my ' + this.make + ' ' + this.model);
+		}
+	};
+
+	car.drive();
+
+	// Wall Post using the same Constructor Invocation Pattern
+	var WallPost = function (creator, recipient, createdAt, content, tags) {
+		this.creator = creator;
+		this.recipient = recipient;
+		this.createdAt = createdAt;
+		this.content = content;
+		this.tags = tags;
+	};
+
+	var post = new WallPost(
+		{ firstName: 'Kyle', lastName: 'Pace' },
+		{ firstName: 'Larry', lastName: 'David' },
+		'03/04/2015 12:00:00 AM',
+		'Happy Birthday!',
+		['Larry David', 'Shaq', 'Regis']
+	);
+
+	var secondPost = new WallPost(
+		{ firstName: 'Kyle', lastName: 'Pace' },
+		{ firstName: 'Kristin', lastName: 'Pace' },
+		'05/03/2015 12:00:00 AM',
+		'Happy Anniversary!',
+		['Larry David', 'Shaq', 'Regis']
+	);
+
+	console.log(post.content); // do this in the actual console.
+	console.log(secondPost.content);
+
+	// demonstrate a failure to use the new keyword and the ramifications
+	var thirdPost = WallPost(
+		{ firstName: 'Kyle', lastName: 'Pace' },
+		{ firstName: 'Kristin', lastName: 'Pace' },
+		'05/03/2015 12:00:00 AM',
+		'Happy Anniversary!',
+		['Larry David', 'Shaq', 'Regis']
+	);
+
+	console.log(window.creator); // now we've polluted the global namespace.
+
+	// How can we make the constructor better?  By passing in an object with named parameters.
+
+	var Vehicle = function (make, model) {
+		this.make = make;
+		this.model = model;
+		this.drive = function () {
+			console.log('Driving to buffalo using my ' + this.make + ' ' + this.model);
+		}
+	};
+
+	var newCar = new Vehicle('Ford', 'Taurus');
+	newCar.drive();
+</script>

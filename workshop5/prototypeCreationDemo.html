@@ -1,0 +1,32 @@
+<script type="text/javascript">
+	var Mammal = function () {
+		this.hasHair = true;
+	}
+
+	Mammal.prototype.speak = function () {
+		console.log("Hi I'm a " + this.name);
+	};
+
+	var Cat = function (name) {
+		this.name = name;
+	};
+
+	Cat.prototype = new Mammal();
+
+	var cat = new Cat('Harold');
+
+	console.log(cat.hasHair);	// Writes out “true” to console.
+
+	cat.speak();			// Writes “Harold” out to the console.
+
+	var Dog = function () { };
+	Dog.prototype = new Mammal();
+
+	Dog.prototype.bark = function () {
+		console.log('woof');
+	};
+
+	var dog = new Dog();
+	console.log(dog.hasHair);
+	dog.bark();
+</script>
