@@ -1,4 +1,5 @@
 <script type="text/javascript">
+	// show chromes prototype inspector
 	var Mammal = function () {
 		this.hasHair = true;
 	}
@@ -13,20 +14,54 @@
 
 	Cat.prototype = new Mammal();
 
-	var cat = new Cat('Harold');
+	Cat.prototype.meow = function () {
+		this.speak();
+		console.log('meow');
+	};
 
-	console.log(cat.hasHair);	// Writes out “true” to console.
+	var harold = new Cat('Harold');
 
-	cat.speak();			// Writes “Harold” out to the console.
+	console.log(harold.hasHair);	// Writes out “true” to console.
 
-	var Dog = function () { };
+	harold.meow();					// Writes “Harold” out to the console.
+
+	var larry = new Cat('Larry');
+	larry.meow();
+
+	var Dog = function (name) {
+		this.name = name;
+	};
+
 	Dog.prototype = new Mammal();
 
 	Dog.prototype.bark = function () {
+		dog.speak();
 		console.log('woof');
 	};
 
-	var dog = new Dog();
+	var dog = new Dog('Kujo');
 	console.log(dog.hasHair);
 	dog.bark();
+
+	try {
+		harold.bark();
+	} catch (e) {
+		console.log('harold cant bark.');
+	}
+
+	var GermanShepherd = function (name) {
+		this.name = name;
+		this.isLarge = true;
+	};
+
+	GermanShepherd.prototype = new Dog();
+
+	GermanShepherd.prototype.speak = function () {
+		console.log('overriding with Woof!');
+	}
+
+	var shepherd = new GermanShepherd('Clifford');
+	console.log(shepherd.isLarge);
+	shepherd.bark();
+	shepherd.speak();
 </script>
