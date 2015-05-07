@@ -1,0 +1,37 @@
+
+
+
+
+<script type="text/javascript">
+
+	var Character = function (options) {
+		this.name = options.name;
+		if (options.alignment &&
+			(options.alignment === 'Good' ||
+			 options.alignment === 'Evil' ||
+			 options.alignment === 'Neutral')) {
+
+			this.alignment = options.alignment;
+		}
+	};
+
+	Character.prototype.setName = function (name) {
+		this.name = name;
+	}
+
+	Character.prototype.getName = function () {
+		return this.name;
+	};
+
+	Character.prototype.getAlignment = function () {
+		return this.alignment;
+	};
+
+	var charlie = new Character({
+		name: 'Charlie',
+		alignment: 'Bad'
+	});
+
+	console.log(charlie.getName());
+	console.log(charlie.getAlignment());
+</script>

@@ -67,11 +67,12 @@
 		['Larry David', 'Shaq', 'Regis']
 	);
 
-	console.log(window.creator); // now we've polluted the global namespace.
+	console.log(creator); // now we've polluted the global namespace.
 
 	// How can we make the constructor better?  By passing in an object with named parameters.
 
 	var Vehicle = function (make, model) {
+		var hiddenProp = 'String';
 		this.make = make;
 		this.model = model;
 		this.drive = function () {

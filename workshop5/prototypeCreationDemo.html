@@ -35,7 +35,7 @@
 	Dog.prototype = new Mammal();
 
 	Dog.prototype.bark = function () {
-		dog.speak();
+		this.speak();
 		console.log('woof');
 	};
 
@@ -46,6 +46,7 @@
 	try {
 		harold.bark();
 	} catch (e) {
+		console.log(e);
 		console.log('harold cant bark.');
 	}
 
@@ -58,10 +59,28 @@
 
 	GermanShepherd.prototype.speak = function () {
 		console.log('overriding with Woof!');
-	}
+	};
 
 	var shepherd = new GermanShepherd('Clifford');
 	console.log(shepherd.isLarge);
 	shepherd.bark();
 	shepherd.speak();
+
+
+	var engineer = { dork: true };
+
+	var otherThing = Object.create(engineer.prototype);
+
+
+	function new(n) {
+		function f() {}
+		f.prototype = n.prototype;
+		return new f();
+	}
+
+
+
+
+
+
 </script>
