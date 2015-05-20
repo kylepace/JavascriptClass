@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  script(src='http://code.jquery.com/jquery-2.1.4.min.js')
+  script(src='/javascripts/jqueryAjax.js')
+  h1 Load People Ajax XMLHttpRequest
+  button(
+    onclick="loadPeople()"
+  )
+    span Load With JSON and Ajax
+  div
+
+  button(
+    onclick="loadPeopleHtml()"
+  )
+    span Load With HTML and Ajax
+
+  button(
+    onclick="loadError()"
+  )
+    span Load With HTML and Randomly Fail
+
+  div#baseballPlayers
