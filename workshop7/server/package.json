@@ -12,6 +12,7 @@
     "body-parser": "^1.12.4",
     "ejs-locals": "^1.0.2",
     "express": "^4.12.4",
+    "express-cors": "0.0.3",
     "lodash": "^3.9.2",
     "mongoose": "^4.0.3",
     "newrelic": "^1.19.2"

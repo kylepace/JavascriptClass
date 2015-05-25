@@ -2,6 +2,7 @@ var newrelic = require('newrelic'),
     express = require('express'),
     app = express(),
     engine = require('ejs-locals'),
+	cors = require('express-cors'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
 	_ = require('lodash'),
@@ -14,6 +15,10 @@ app.set('views', __dirname + '/app/views');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(cors({
+    allowedOrigins: ['*']
+}));
 
 app.get('/', function (req, res) {
     res.render('index');
