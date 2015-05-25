@@ -25,8 +25,123 @@
 			</div>
 		</div>
 	</nav>
-	<div class="container">
+	<div class="starter-template">
+		<div class="container">
+			<div class="form-horizontal">
+				<div class="form-group">
+					<div class="col-sm-8">
+						<input type="text" id="username" class="form-control" placeholder="Enter a username" />
+					</div>
+					<div class="col-sm-4">
+						<button class="btn btn-info" onclick="enterUsername()">Enter</button>
+					</div>
+				</div>
+			</div>
+			<div id="chatArea" style="display:none;">
+				<div class="form-horizontal">
+					<div class="form-group">
+						<div class="col-sm-8">
+							<input type="text" id="roomName" class="form-control" placeholder="Create a room" />
+						</div>
+						<div class="col-sm-4">
+							<button class="btn btn-info" onclick="createRoom()">Create</button>
+						</div>
+					</div>
+				</div>
 
+				<div class="row">
+					<div class="col-sm-8">
+						<div class="form-horizontal">
+							<h4>Add a Post</h4>
+							<div class="form-group">
+								<div class="col-sm-8">
+									<input type="text" id="message" class="form-control" placeholder="Say what?" />
+								</div>
+								<div class="col-sm-4">
+									<button class="btn btn-info" onclick="postMessage()">Post</button>
+								</div>
+							</div>
+						</div>
+
+						<h4>Posts</h4>
+						<div id="posts">
+
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<h4>Rooms</h4>
+						<div id="rooms">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+	<script type="text/javascript">
+		var baseUrl = 'http://mainstreetchat-kylepace.rhcloud.com/';
+		var username, currentRoom;
+		var loadChatRooms = function () {
+			var roomArea = $('#rooms');
+			$.getJSON(baseUrl + '/chatroom', function (chatRooms) {
+				chatRooms.forEach(function (room) {
+					roomArea.append("<p><a href=\"javascript:void(0);\" onclick=\"goToRoom('" + room._id + "')\">" + room.name + "</a><p/>");
+				});
+			});
+		};
+
+		var postMessage = function () {
+			var message = $('#message');
+			if (message.val()) {
+				$.post(baseUrl + '/chatroom/' + currentRoom._id + '/post', { username: username, text: message.val() }, function () {
+					message.val('');
+					goToRoom(currentRoom._id);
+				});
+			} else {
+				alert('You need to enter text for a message.');
+			}
+		};
+
+		var goToRoom = function (id) {
+			var postsArea = $('#posts');
+			postsArea.empty();
+			$.getJSON(baseUrl + '/chatroom/' + id, function (room) {
+				currentRoom = room;
+				room.posts.forEach(function (post) {
+					postsArea.append(
+						'<p>By: ' + post.username + '</p>' +
+						'<p>' + post.text + '</p>'
+					);
+				});
+			});
+		};
+
+		var showChatArea = function () {
+			loadChatRooms();
+			$('#chatArea').show();
+		};
+
+		var enterUsername = function () {
+			var usernameVal = $('#username').val();
+			if (!usernameVal) {
+				alert('You must enter a username');
+			} else {
+				username = usernameVal;
+				showChatArea();
+			}
+		};
+
+		var createRoom = function () {
+			var roomName = $('#roomName').val();
+			if (!roomName) {
+				alert('You must enter a room name');
+			} else {
+				$.post(baseUrl + '/chatroom', { name: roomName }, function () {
+					alert('done');
+				});
+			}
+		};
+	</script>
 </body>
 </html>

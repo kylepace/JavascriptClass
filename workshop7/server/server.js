@@ -2,11 +2,13 @@ var newrelic = require('newrelic'),
     express = require('express'),
     app = express(),
     engine = require('ejs-locals'),
-	cors = require('express-cors'),
+	cors = require('cors'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
 	_ = require('lodash'),
-	ChatRoom = require('./app/models/chatroom');
+	ChatRoom = require('./app/models/chatrooms');
+
+app.use(cors());
 
 app.engine('ejs', engine);
 app.use('/public', express.static(__dirname + '/public'));
@@ -15,10 +17,6 @@ app.set('views', __dirname + '/app/views');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-app.use(cors({
-    allowedOrigins: ['*']
-}));
 
 app.get('/', function (req, res) {
     res.render('index');
@@ -121,7 +119,7 @@ app.post('/chatroom/:id/post', function (req, res) {
 
 var connectionString = 'localhost/mainstreet-chatroom';
 if (process.env.OPENSHIFT_MONGODB_DB_URL) {
-    connectionString = process.env.OPENSHIFT_MONGODB_DB_URL + 'mainstreet-chatroom';
+    connectionString = process.env.OPENSHIFT_MONGODB_DB_URL + 'mainstreetchat';
 }
 mongoose.connect(connectionString);
 
