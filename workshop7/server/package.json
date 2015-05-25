@@ -1,0 +1,19 @@
+{
+  "name": "ChatRoom",
+  "version": "1.0.0",
+  "description": "ChatRoom for MainStreet host javascript class.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.12.4",
+    "ejs-locals": "^1.0.2",
+    "express": "^4.12.4",
+    "lodash": "^3.9.2",
+    "mongoose": "^4.0.3",
+    "newrelic": "^1.19.2"
+  }
+}

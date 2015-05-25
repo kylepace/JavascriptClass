@@ -1,7 +1,9 @@
 function loadPeople() {
+
 	$.getJSON("/people", function (data) {
 		console.log(data);
 	});
+
 }
 
 function loadPeopleHtml() {
@@ -13,30 +15,32 @@ function loadPeopleHtml() {
 	});
 
 	// short-hand
-	// $.get('/peopleHTML', function (data) {
-	// 	document.getElementById('baseballPlayers').innerHTML = data;
-	// });
+	$.get('/peopleHTML', function (data) {
+		document.getElementById('baseballPlayers').innerHTML = data;
+	});
 }
 
 function loadError() {
 	// Long-Hand
+	function fail() {
+		document.getElementById('baseballPlayers').innerHTML = '';
+		alert('There was a problem communicating with the server.');
+	}
+
 	$.ajax('/peopleFail', {
 		success: function (data) {
 			document.getElementById('baseballPlayers').innerHTML = data;
-		},
-		error: function (data) {
-			document.getElementById('baseballPlayers').innerHTML = '';
-			alert('There was a problem communicating with the server.');
 		}
-	});
+	})
+	.fail(fail);
 
 	// short-hand
-	// $.get('/peopleFail', function (data) {
-	// 	document.getElementById('baseballPlayers').innerHTML = data;
-	// })
-	// .fail(function () {
-	// 	document.getElementById('baseballPlayers').innerHTML = '';
-	// 	alert('There was a problem communicating with the server.');
-	//
-	// });
+	
+	$.get('/peopleFail', function (data) {
+		document.getElementById('baseballPlayers').innerHTML = data;
+	})
+	.fail(function () {
+		document.getElementById('baseballPlayers').innerHTML = '';
+		alert('There was a problem communicating with the server.');
+	});
 }
