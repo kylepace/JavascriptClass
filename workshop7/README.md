@@ -47,7 +47,7 @@ As a user, I can post to a chat room.
 
 Acceptance
 - User can add 250 character message to a chatroom.
-- Use http://mainstreetchat-kylepace.rhcloud.com/chatroom { username: 'username', text: 'Text to post' }
+- Use http://mainstreetchat-kylepace.rhcloud.com/chatroom/{id}/post { username: 'username', text: 'Text to post' }
 
 ### Search for a chat room
 As a user I want to search for a chat room.
