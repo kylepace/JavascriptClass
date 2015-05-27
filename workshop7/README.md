@@ -33,28 +33,28 @@ As a user, I want to create a room to chat.
 Acceptance
 - User can enter a chat room name.
 - If the room already exists, let the user know.
-- Use THIS API POST /chatroom { name: 'Chat Room Name' }
+- Use http://mainstreetchat-kylepace.rhcloud.com/chatroom { name: 'Chat Room Name' }
 
 ### See chat rooms
 As a user I want to see a list of chat rooms available to join.
 
 Acceptance
 - User can see a list of all available chat rooms.
-- Use THIS API ROUTE GET /chatroom
+- Use http://mainstreetchat-kylepace.rhcloud.com/chatroom
 
 ### Post to chat room
 As a user, I can post to a chat room.
 
 Acceptance
 - User can add 250 character message to a chatroom.
-- Use THIS API ROUTE POST /chatroom { username: 'username', text: 'Text to post' }
+- Use http://mainstreetchat-kylepace.rhcloud.com/chatroom { username: 'username', text: 'Text to post' }
 
 ### Search for a chat room
 As a user I want to search for a chat room.
 
 Acceptance
 - Can enter text and find a chat room by name
-- Use THIS API ROUTE GET /chatroom?name=RoomName
+- Use http://mainstreetchat-kylepace.rhcloud.com/chatroom?name=RoomName
 
 ### See posts in a chatroom
 As a user I want to see the posts in a chat room.
@@ -62,4 +62,4 @@ As a user I want to see the posts in a chat room.
 Acceptance
 - Click on a room to "enter".
 - See posts in the room.
-- Use THIS API ROUTE GET /chatroom/:id where id is the _id returned on the chatroom.
+- Use http://mainstreetchat-kylepace.rhcloud.com/chatroom/:id where id is the _id returned on the chatroom.
