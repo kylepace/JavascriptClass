@@ -31,7 +31,10 @@ app.get('/chatroom', function (req, res) {
 	if (req.query && req.query.name) {
 		query.name = new RegExp(req.query.name, "i");
 	}
-	ChatRoom.find(query).limit(30).exec(function (err, rooms) {
+	var options = {
+		"sort": "name"
+	};
+	ChatRoom.find(query, options).limit(30).exec(function (err, rooms) {
 		if (err) {
 			res.status(500).send('Server error finding rooms, please try again.');
 		}
