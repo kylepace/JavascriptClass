@@ -15,12 +15,14 @@ function init(app) {
 	app.get('/products', randomError, function (req, res, next) {
 		var query = { };
 		if (req.query && req.query.search) {
-			query = {
-				$or: [
-					{ name: new RegExp(req.query.search, "i") },
-					{ description: new RegExp(req.query.search, "i") }
-				]
-			};
+			query.$or = [
+				{ name: new RegExp(req.query.search, "i") },
+				{ description: new RegExp(req.query.search, "i") }
+			];
+		}
+
+		if (req.query && req.query.category) {
+			query.categories = req.query.category;
 		}
 
 		Product.find(query).sort('name').limit(30).exec(function (err, products) {

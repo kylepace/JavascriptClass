@@ -7,7 +7,7 @@ var schema = new mongoose.Schema({
 	description: { type: 'String' },
 	image: { type: 'String', required: true },
 	price: { type: 'Number', required: true },
-    tags: [{ type: 'String' }]
+    categories: [{ type: 'String' }]
 });
 
 module.exports = mongoose.model('Product', schema);
