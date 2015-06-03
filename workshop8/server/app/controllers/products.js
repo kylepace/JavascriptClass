@@ -1,11 +1,10 @@
-var Product = require('../models/product');
+var Product = require('../models/product'),
+	Order = require('../models/order');
 
 function randomError(req, res, next) {
 	var errorProb = Math.random();
-	if (errorProb > 0.75) {
-		console.log(errorProb);
-		// replace this with a genuine error
-		next();
+	if (errorProb > 0.80) {
+		next(new Error('Random error, sorry.'));
 	} else {
 		next();
 	}
@@ -45,12 +44,55 @@ function init(app) {
 		});
 	});
 
-	app.get('/categories', function (req, res, next) {
+	app.get('/categories', randomError, function (req, res, next) {
 		Product.distinct('categories', function (err, categories) {
 			if (err) {
 				return next(err);
 			}
 			res.send(categories);
+		});
+	});
+
+	app.post('/order', randomError, function (req, res, next) {
+		var order = new Order(req.body);
+		order.save(function (err, order) {
+			if (err) {
+				return next(err);
+			} else {
+				return res.status(201).send(order);
+			}
+		});
+	});
+
+	app.get('/order/:id', randomError, function (req, res, next) {
+		Order.findOne({ _id: req.params.id }, function (err, order) {
+			if (err) {
+				return next(err);
+			}
+			if (!order) {
+				return res.status(404).send('Order not found');
+			}
+			res.send(order);
+		});
+	});
+
+	app.put('/order/:id', randomError, function (req, res, next) {
+		Order.findOne({ _id: req.params.id }, function (err, order) {
+			if (err) {
+				return next(err);
+			}
+			if (!order) {
+				return res.status(404).send('Order not found');
+			}
+
+			order.items = req.body.items;
+			order.markModified('items');
+			order.save(function (err) {
+				if (err) {
+					return next(err);
+				}
+				res.send(order);
+			});
 		});
 	});
 }

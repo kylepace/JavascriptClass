@@ -6,7 +6,7 @@ var newrelic = require('newrelic'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
 	_ = require('lodash'),
-    ProductController = require('./app/controllers/products'),
+    autoIncrement = require('mongoose-auto-increment'),
 	ChatRoom = require('./app/models/chatrooms');
 
 app.use(cors());
@@ -119,8 +119,6 @@ app.post('/chatroom/:id/post', function (req, res) {
 	});
 });
 
-ProductController(app);
-
 var connectionString = 'localhost/mainstreet-chatroom';
 if (process.env.OPENSHIFT_MONGODB_DB_URL) {
     connectionString = process.env.OPENSHIFT_MONGODB_DB_URL + 'mainstreetchat';
@@ -128,6 +126,8 @@ if (process.env.OPENSHIFT_MONGODB_DB_URL) {
 mongoose.connect(connectionString);
 
 var db = mongoose.connection;
+autoIncrement.initialize(db);
+require('./app/controllers/products')(app);
 db.once('open', function() {
     var serverPort = process.env.OPENSHIFT_NODEJS_PORT || 8080;
     var serverIpAddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';

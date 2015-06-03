@@ -16,6 +16,7 @@
     "express-cors": "0.0.3",
     "lodash": "^3.9.2",
     "mongoose": "^4.0.3",
+    "mongoose-auto-increment": "^4.0.0",
     "newrelic": "^1.19.2"
   }
 }
