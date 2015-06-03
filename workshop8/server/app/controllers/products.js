@@ -44,6 +44,15 @@ function init(app) {
 			}
 		});
 	});
+
+	app.get('/categories', function (req, res, next) {
+		Product.distinct('categories', function (err, categories) {
+			if (err) {
+				return next(err);
+			}
+			res.send(categories);
+		});
+	});
 }
 
 module.exports = init;
