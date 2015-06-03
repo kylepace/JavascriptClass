@@ -1,0 +1,36 @@
+
+
+<script type="text/javascript">
+
+// Slide 1 Example
+function findItem( itemName ) {
+	$.getJSON('/items', function (items) {
+		return items.filter({ 'name' : 'pants' });
+	});
+}
+
+var item = findItem('pants');
+
+console.log(item);  // what’s wrong with this?
+
+
+
+// Promises Creation example using jquery's library
+function userCanDrink( age ) {
+	var deferred = $.Deferred();
+	$.getJSON('/agelimit/us', function ( limit ) {
+		if ( age > limit ) {
+			deferred.resolve(true);
+		} else {
+			deferred.resolve(false);
+			}
+	})
+	.fail(function () {
+		deferred.reject(‘Problem communicating with the server.’);
+	});
+
+	return deferred.promise();
+}
+
+
+</script>
