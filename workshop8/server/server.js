@@ -6,6 +6,7 @@ var newrelic = require('newrelic'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
 	_ = require('lodash'),
+    ProductController = require('./app/controllers/products'),
 	ChatRoom = require('./app/models/chatrooms');
 
 app.use(cors());
@@ -32,7 +33,7 @@ app.get('/chatroom', function (req, res) {
 		query.name = new RegExp(req.query.name, "i");
 	}
 
-	ChatRoom.find(query).limit(30).sort('name').exec(function (err, rooms) {
+	ChatRoom.find(query).sort('name').limit(30).exec(function (err, rooms) {
 		if (err) {
 			res.status(500).send('Server error finding rooms, please try again.');
 		}
@@ -117,6 +118,8 @@ app.post('/chatroom/:id/post', function (req, res) {
 		});
 	});
 });
+
+ProductController(app);
 
 var connectionString = 'localhost/mainstreet-chatroom';
 if (process.env.OPENSHIFT_MONGODB_DB_URL) {
