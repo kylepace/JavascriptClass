@@ -2,11 +2,14 @@
 
 <script type="text/javascript">
 
-// Slide 1 Example
+function filterItemByPants(items) {
+	return items.filter({ 'name' : 'pants' });
+}
+
+
+
 function findItem( itemName ) {
-	$.getJSON('/items', function (items) {
-		return items.filter({ 'name' : 'pants' });
-	});
+	return $.getJSON('/items', filterItemByPants);
 }
 
 var item = findItem('pants');
@@ -15,14 +18,17 @@ console.log(item);  // what’s wrong with this?
 
 
 
+
+
+
 // Promises Creation example using jquery's library
 function userCanDrink( age ) {
 	var deferred = $.Deferred();
 	$.getJSON('/agelimit/us', function ( limit ) {
 		if ( age > limit ) {
-			deferred.resolve(true);
+			deferred.resolve("yes");
 		} else {
-			deferred.resolve(false);
+			deferred.resolve("no");
 			}
 	})
 	.fail(function () {
@@ -31,6 +37,16 @@ function userCanDrink( age ) {
 
 	return deferred.promise();
 }
+
+userCanDrink(21)
+	.then(
+		function (canDrink) {
+			console.log(canDrink);
+		},
+		function (err) {
+			console.log(err);
+		}
+	);
 
 
 </script>

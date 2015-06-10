@@ -1,0 +1,28 @@
+<script type="text/javascript">
+
+	var car = {
+		type: 'Oldsmobile',
+		currentSpeed: 0,
+		maxSpeed: 55,
+		drive: function () {
+			console.log('vroom, going: ' + this.currentSpeed + ' mph');
+		}
+	};
+
+	// how do we make the car drive?
+
+	// how do we add a method to car to make it accelerate?
+
+
+	// with a driver
+	var driver = {
+		name: ‘Kyle Pace’,
+		hasTakenDriversEd: true,
+		hasInsurance: true,
+		yearsDriving: 16,
+		car: car,
+		drive: function () {
+			car.drive();
+		}
+	};
+</script>
