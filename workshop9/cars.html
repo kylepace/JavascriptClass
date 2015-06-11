@@ -12,9 +12,12 @@
 		},
 		drive: function () {
 			console.log('vroom, going: ' + this.currentSpeed + ' mph');
+		},
+		getType: function () {
+			return this.type;
 		}
 	};
-
+	var carType = oldsmobile.getType();
 	//oldsmobile.accelerate(88);
 	oldsmobile.drive();
 
