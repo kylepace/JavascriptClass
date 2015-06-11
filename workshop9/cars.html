@@ -1,13 +1,22 @@
 <script type="text/javascript">
 
-	var car = {
+
+	var oldsmobile = {
 		type: 'Oldsmobile',
 		currentSpeed: 0,
 		maxSpeed: 55,
+		accelerate: function (speedIncrease) {
+			this.currentSpeed += speedIncrease;
+			this.drive();
+			this.goCrazy();
+		},
 		drive: function () {
 			console.log('vroom, going: ' + this.currentSpeed + ' mph');
 		}
 	};
+
+	//oldsmobile.accelerate(88);
+	oldsmobile.drive();
 
 	// how do we make the car drive?
 
@@ -16,13 +25,21 @@
 
 	// with a driver
 	var driver = {
-		name: ‘Kyle Pace’,
+		name: 'Kyle Pace',
 		hasTakenDriversEd: true,
 		hasInsurance: true,
 		yearsDriving: 16,
-		car: car,
+		car: oldsmobile,
 		drive: function () {
-			car.drive();
+			this.car.drive();
 		}
 	};
+
+
+	function createCar(carOptions) {
+		return {
+			name: carOptions.name
+			// drive
+		};
+	}
 </script>
