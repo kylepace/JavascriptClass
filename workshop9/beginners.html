@@ -1,2 +1,32 @@
 <script>
+var person = "Mr. Rogers";
+	console.log(person.length);
+	person += " Neighborhood";
+	console.log(person);
+	var age = 57;
+	var personAndAge = person + ' ' + age;
+	console.log(personAndAge);
+	function add(x, y) {
+		return x + y;
+	}
+	var thirteen = add(6, 7);
+	console.log(thirteen);
+	var starWars = add("Star Wars", "The Force Awakens");
+	console.log(starWars);
+	function printArray(arr) {
+		for (var i = 0; i < arr.length; i++) {
+			console.log(arr[i]);
+		}
+	}
+	var cereals = ["Cap'n Crunch", "Cheerios", "Wheaties"];
+	printArray(cereals);
+	function canRetire(age) {
+		if (age > 65) {
+			return true;
+		} else {
+			return false;
+		}
+		// alternatively
+		// return age > 65;
+	}
 </script>
