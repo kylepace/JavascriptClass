@@ -41,7 +41,7 @@ function init(app) {
 	});
 
 	app.post('/caps', function (req, res, next) {
-		var cap = new Cap(res.body);
+		var cap = new Cap(req.body);
 		cap.save(function (err, newCap) {
 			if (err) {
 				return res.status(400).send(err);
