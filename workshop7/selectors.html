@@ -53,18 +53,17 @@
 	</div>
 
 <script type="text/javascript">
-	var updateHtml = function () {
-		$('#textArea').html('<h3>Updating the html in this area</h3>');
-	};
-
-	var updateBgInfo = function () {
-		$('.bg-info').html('All of you have this text.');
-	};
-
-	var clearAll = function () {
-		$('.bg-info').empty();
-		$('#textArea').empty();
-	};
+	var url = 'http://mainstreetchat-kylepace.rhcloud.com/chatroom';
+	$.ajax({
+		method: 'GET',
+		url: url,
+		success: function () {
+			console.log('hi there');
+		},
+		error: function () {
+			console.log('asdfsd');
+		}
+	});
 </script>
 </body>
 </html>
